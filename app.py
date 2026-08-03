@@ -165,10 +165,10 @@ if st.button("Predict Price"):
     for col in ['model', 'transmission', 'fuelType']:
         input_df[col] = label_encoders[col].transform(input_df[col].astype(str))
 
-    numerical_cols = ['year', 'mileage', 'tax', 'mpg', 'engineSize']
-    input_df[numerical_cols] = scaler.transform(input_df[numerical_cols])
+    all_cols = ['model', 'year', 'transmission', 'mileage', 'fuelType', 'tax', 'mpg', 'engineSize']
+    input_df[all_cols] = scaler.transform(input_df[all_cols])
 
-    input_df = input_df[['model', 'year', 'transmission', 'mileage', 'fuelType', 'tax', 'mpg', 'engineSize']]
+    input_df = input_df[all_cols]
 
     prediction = model.predict(input_df)[0]
 
